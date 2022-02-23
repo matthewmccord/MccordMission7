@@ -52,11 +52,21 @@ namespace MccordMission7
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "categoryPage",
+                    pattern: "{bookCategory}/Page{pageNumber}",
+                    defaults: new { Controller = "Home", action="Index"});
+
+                endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNumber}",
-                    defaults: new { Controller = "Home", action = "Index" });
+                    defaults: new { Controller = "Home", action = "Index", pageNumber = 1 });
+
+                endpoints.MapControllerRoute("category", "{bookCategory}",
+                    new { Controller = "Home", action = "Index", pageNumber = 1 });
 
                 endpoints.MapDefaultControllerRoute();
+
+
             });
         }
     }

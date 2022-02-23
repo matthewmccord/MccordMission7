@@ -17,19 +17,21 @@ namespace MccordMission7.Controllers
             repo = newBook;
         }
 
-        public IActionResult Index(int pageNumber = 1)
+        public IActionResult Index(string bookCategory ,int pageNumber = 1)
         {
             int pageLength = 10;
 
             var hello = new BookViewModel
             {
-                Books = repo.Books.OrderBy(b => b.Title)
+                Books = repo.Books
+                .Where(b => b.Category == bookCategory || bookCategory ==null)
+                .OrderBy(b => b.Title)
                 .Skip((pageNumber - 1) * pageLength)
                 .Take(pageLength),
 
                 PageChanging = new PageChanging
                 {
-                    TotalBooks = repo.Books.Count(),
+                    TotalBooks = (bookCategory == null ? repo.Books.Count() : repo.Books.Where(x => x.Category ==bookCategory).Count()),
                     BooksPerPage = pageLength,
                     CurrentPage = pageNumber,
                 }
