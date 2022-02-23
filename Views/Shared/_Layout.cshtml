@@ -4,23 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/lib2/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/lib2/css/bootstrap-grid.css" />
-    <link rel="stylesheet" href="~/lib2/css/bootstrap-reboot.css" />
-    <link rel="stylesheet" href="~/lib2/css/bootstrap-utilities.css" />
+
+    <link href="~/lib2/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-nav navbar-expand-lg navbar-toggler bg-success border-dark">
-            <a asp-controller="Home" asp-action="Index">Da Bois</a>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="bg-dark text-light p-2">
+        <span class="navbar-brand m-lg-2">McCord Books</span>
     </div>
-
+    
+    <div class="row m-1 p-1">
+        <div id="types" class="col-3">
+            put the categories here
+        </div>
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - MccordBooks

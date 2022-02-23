@@ -26,6 +26,10 @@ namespace MccordMission7.Infrastructure
         public ViewContext vc { get; set; }
         public PageChanging PageChanger { get; set; }
         public string PageActor { get; set; }
+        public string PageClass { get; set; }
+        public bool PageClassesEnabled { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
             IUrlHelper uh = uhf.GetUrlHelper(vc);
@@ -36,6 +40,11 @@ namespace MccordMission7.Infrastructure
             {
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageActor, new { pageNumber = i });
+                if (PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(i == PageChanger.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
                 tb.InnerHtml.Append(i.ToString());
                 final.InnerHtml.AppendHtml(tb);
             }

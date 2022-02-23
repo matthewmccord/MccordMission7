@@ -4,23 +4,13 @@
 
 @model BookViewModel
 
-<h1>I need you to buy my books</h1>
-
 @foreach (Book b in Model.Books)
             {
-                <h3>@b.Title</h3>
-                <ul>
-                    <li>Author: @b.Author</li>
-                    <li>ISBN: @b.Isbn</li>
-                    <li>Publisher: @b.Publisher</li>
-                    <li>Classification: @b.Classification</li>
-                    <li>Category: @b.Category</li>
-                    <li>Page Count: @b.PageCount</li>
-                    <li>Price: @b.Price</li>
-                </ul>
-                <br />
+                <partial name="BookSummary" model="b" />
             }
 
-<div page-changer="@Model.PageChanging" page-actor="Index"></div>
+<div page-changer="@Model.PageChanging" page-actor="Index" page-class="btn" 
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true" 
+     class="btn-group pull-right m-1"></div>
 
 

@@ -51,6 +51,11 @@ namespace MccordMission7
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{pageNumber}",
+                    defaults: new { Controller = "Home", action = "Index" });
+
                 endpoints.MapDefaultControllerRoute();
             });
         }
