@@ -34,6 +34,11 @@ namespace MccordMission7
            });
 
             services.AddScoped<IBooksRepository, EfBookRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +53,8 @@ namespace MccordMission7
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -65,6 +72,8 @@ namespace MccordMission7
                     new { Controller = "Home", action = "Index", pageNumber = 1 });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
 
 
             });
