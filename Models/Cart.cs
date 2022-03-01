@@ -10,7 +10,7 @@ namespace MccordMission7.Models
 
         public List<CartItem> Carts { get; set; } = new List<CartItem>();
         
-        public void AddItem(Book bo, int qty)
+        public virtual void AddItem(Book bo, int qty)
         {
             CartItem line = Carts
                 .Where(p => p.Book.BookId == bo.BookId)
@@ -30,6 +30,15 @@ namespace MccordMission7.Models
             }
         }
 
+        public virtual void RemoveItem(Book bo)
+        {
+            Carts.RemoveAll(x => x.Book.BookId == bo.BookId);
+        }
+
+        public virtual void ClearBasket()
+        {
+            Carts.Clear();
+        }
         public double CalculateSub()
         {
             double total = Carts.Sum(x => x.Quantity * x.Book.Price);
