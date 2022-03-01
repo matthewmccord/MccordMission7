@@ -38,11 +38,11 @@ namespace MccordMission7.Pages
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
 
-        public IActionResult OnPostRemove(int bookId, string returnUrl)
+        public IActionResult OnPostRemove(int BookId, string returnUrl)
         {
-            cart.RemoveItem(cart.Carts.First(x => x.Book.BookId == bookId).Book);
+            cart.RemoveItem(cart.Carts.First(x => x.Book.BookId == BookId).Book);
 
-            return RedirectToPage(new { ReturnUrl = returnUrl });
+            return RedirectToPage(new {ReturnUrl = returnUrl });
         }
     }
 }

@@ -27,9 +27,9 @@ namespace MccordMission7.Models
             Session.SetJson("Cart", this);
         }
 
-        public override void RemoveItem(Book bo)
+        public override void RemoveItem(Book book)
         {
-            base.RemoveItem(bo);
+            base.RemoveItem(book);
             Session.SetJson("Cart", this);
         }
 
