@@ -33,10 +33,10 @@ namespace MccordMission7.Models
             Session.SetJson("Cart", this);
         }
 
-        public override void ClearBasket()
+        public override void ClearCart()
         {
-            base.ClearBasket();
-            Session.Remove("Basket");
+            base.ClearCart();
+            Session.Remove("Cart");
         }
     }
 }

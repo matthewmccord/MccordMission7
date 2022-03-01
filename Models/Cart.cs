@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,7 +36,7 @@ namespace MccordMission7.Models
             Carts.RemoveAll(x => x.Book.BookId == bo.BookId);
         }
 
-        public virtual void ClearBasket()
+        public virtual void ClearCart()
         {
             Carts.Clear();
         }
@@ -49,6 +50,7 @@ namespace MccordMission7.Models
 
     public class CartItem
     {
+        [Key]
         public int ItemID { get; set; }
         public Book Book { get; set; }
         public int Quantity { get; set; }

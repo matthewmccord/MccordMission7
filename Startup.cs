@@ -34,6 +34,7 @@ namespace MccordMission7
            });
 
             services.AddScoped<IBooksRepository, EfBookRepository>();
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
             services.AddRazorPages();
 
