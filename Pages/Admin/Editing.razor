@@ -1,0 +1,28 @@
+﻿@page "/admin/projects/edit/{id:long}"
+@page "/admin/projects/create"
+@inherits OwningComponentBase<IBooksRepository>
+
+
+<style>
+    div.validation-message {color: deeppink; font-weight:500}
+</style>
+
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Book</h3>
+
+<EditForm Model="b" OnValidSubmit="SaveBook">
+
+
+
+</EditForm>
+
+
+
+
+@code {
+    [Parameter]
+    public long Id { get; set; } = 0;
+
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+
+    public string TitleText => Id == 0 ? "Insert" : "Edit";
+}
