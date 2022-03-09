@@ -36,5 +36,7 @@ namespace MccordMission7.Models
         public string Country { get; set; }
 
         public bool AnonymousGift { get; set; }
+        [BindNever]
+        public bool PurchaseRecorded { get; set; }
     }
 }

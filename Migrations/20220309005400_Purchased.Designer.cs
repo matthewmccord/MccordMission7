@@ -3,14 +3,16 @@ using System;
 using MccordMission7.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MccordMission7.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    partial class BookstoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220309005400_Purchased")]
+    partial class Purchased
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
