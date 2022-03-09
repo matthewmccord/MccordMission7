@@ -15,6 +15,11 @@
                         <td>@p.ZipCode</td>
                         <th>Book</th>
                         <th>Quantity</th>
+
+                        <td>
+                            <button class="btn btn-sm btn-danger" 
+                                    @onclick="@(x=> PurchaseSelected.InvokeAsync(p.PurchaseId))">@ButtonName</button>
+                        </td>
                     </tr>
 
                     @foreach (CartItem ci in p.Lines)
@@ -38,7 +43,7 @@
 
 @code{
     [Parameter]
-    public string? TableTitle { get; set; } = "Purchases";
+    public string TableTitle { get; set; } = "Purchases";
 
     [Parameter]
     public IEnumerable<Purchase> Purchases { get; set; }
