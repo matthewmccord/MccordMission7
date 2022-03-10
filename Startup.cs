@@ -56,9 +56,11 @@ namespace MccordMission7
             //this tells wwwroot to use the files in it's folders
             app.UseStaticFiles();
 
-            app.UseRouting();
+            
 
             app.UseSession();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

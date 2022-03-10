@@ -48,6 +48,8 @@
 
 </table>
 
+<NavLink class="btn btn-primary" href="/admin/books/create">Create a New Book</NavLink>
+
 @code {
     public IBooksRepository repo => Service;
 
@@ -63,7 +65,7 @@
     }
 
     public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
-    public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
+    public string GetEditUrl(long id) => $"/admin/books/editing/{id}";
 
     public async Task RemoveBook (Book b)
     {

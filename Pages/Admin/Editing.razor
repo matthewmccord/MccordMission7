@@ -1,7 +1,9 @@
-﻿@page "/admin/projects/edit/{id:long}"
-@page "/admin/projects/create"
+﻿@page "/admin/books/editing/{id:long}"
+@page "/admin/books/create"
 @inherits OwningComponentBase<IBooksRepository>
 
+
+<p>Hello!!</p>
 
 <style>
     div.validation-message {color: deeppink; font-weight:500}
@@ -11,62 +13,61 @@
 
 <EditForm Model="b" OnValidSubmit="SaveBook">
     <DataAnnotationsValidator></DataAnnotationsValidator>
-    @if (b.BookId != 0)
-    {
-        <div class="form-group">
-            <label>Book ID</label>
-            <input class="form-control" disabled value="@b.BookId" />
-        </div>
+    <div class="form-group">
+        <label>Book ID</label>
+        <input class="form-control" disabled value="@b.BookId" />
+    </div>
 
-        <div class="form-group">
-            <label>Book Title</label>
-            <ValidationMessage For="@(() => b.Title)"></ValidationMessage>
-            <InputText class="form-control" @bind-Value="b.Title"></InputText>
-        </div>
+    <div class="form-group">
+        <label>Book Title</label>
+        <ValidationMessage For="@(() => b.Title)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Title"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>Author</label>
-            <ValidationMessage For="@(() => b.Author)"></ValidationMessage>
-            <InputText class="form-control" @bind-Value="b.Author"></InputText>
-        </div>
+    <div class="form-group">
+        <label>Author</label>
+        <ValidationMessage For="@(() => b.Author)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Author"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>Publisher</label>
-            <ValidationMessage For="@(() => b.Publisher)"></ValidationMessage>
-            <InputText class="form-control" @bind-Value="b.Publisher"></InputText>
-        </div>
+    <div class="form-group">
+        <label>Publisher</label>
+        <ValidationMessage For="@(() => b.Publisher)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Publisher"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>ISBN</label>
-            <ValidationMessage For="@(() => b.Isbn)"></ValidationMessage>
-            <InputNumber class="form-control" @bind-Value="b.Isbn"></InputNumber>
-        </div>
+    <div class="form-group">
+        <label>ISBN</label>
+        <ValidationMessage For="@(() => b.Isbn)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Isbn"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>Classification</label>
-            <ValidationMessage For="@(() => b.Classification)"></ValidationMessage>
-            <InputText class="form-control" @bind-Value="b.Classification"></InputText>
-        </div>
+    <div class="form-group">
+        <label>Classification</label>
+        <ValidationMessage For="@(() => b.Classification)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Classification"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>Category</label>
-            <ValidationMessage For="@(() => b.Category)"></ValidationMessage>
-            <InputText class="form-control" @bind-Value="b.Category"></InputText>
-        </div>
+    <div class="form-group">
+        <label>Category</label>
+        <ValidationMessage For="@(() => b.Category)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.Category"></InputText>
+    </div>
 
-        <div class="form-group">
-            <label>Page Count</label>
-            <ValidationMessage For="@(() => b.PageCount)"></ValidationMessage>
-            <InputNumber class="form-control" @bind-Value="b.PageCount"></InputNumber>
-        </div>
+    <div class="form-group">
+        <label>Page Count</label>
+        <ValidationMessage For="@(() => b.PageCount)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="b.PageCount"></InputNumber>
+    </div>
 
-        <div class="form-group">
-            <label>Price</label>
-            <ValidationMessage For="@(() => b.Price)"></ValidationMessage>
-            <InputNumber class="form-control" @bind-Value="b.Price"></InputNumber>
-        </div>
-    }
+    <div class="form-group">
+        <label>Price</label>
+        <ValidationMessage For="@(() => b.Price)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="b.Price"></InputNumber>
+    </div>
 
+    <button type="submit" class="btn btn-@ThemeColor">Save</button>
+    <NavLink class="btn btn-secondary" href="/admin/books">Cancel</NavLink>
 </EditForm>
 
 
@@ -81,8 +82,11 @@
     public string TitleText => Id == 0 ? "Insert" : "Edit";
 
     public Book b { get; set; } = new Book();
-
     public IBooksRepository repo => Service;
+
+
+
+
 
     protected override void OnParametersSet()
     {
@@ -103,7 +107,10 @@
         {
             repo.SaveBook(b);
         }
+
+        NavManager.NavigateTo("/admin/books");
     }
+
 
     [Inject]
     public NavigationManager NavManager { get; set; }
