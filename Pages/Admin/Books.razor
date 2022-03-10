@@ -3,8 +3,8 @@
 
 @inherits OwningComponentBase<IBooksRepository>
 
-<table class="table table-sm table-striped table-bordered">
-    <thead>
+<table class="table table-sm table-bordered">
+    <thead class="bg-dark text-white">
         <tr>
             <th>Book ID</th>
             <th>Title</th>
@@ -13,7 +13,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody class="table-hover">
         @if (BookData?.Count() > 0)
             {
                 @foreach (Book b in BookData)
@@ -33,7 +33,7 @@
                         </td>
 
                         <td>
-                            <NavLink class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete Book</NavLink>
+                            <NavLink class="btn btn-outline-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete Book</NavLink>
                         </td>
                     </tr>
                 }

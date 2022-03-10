@@ -1,11 +1,11 @@
-﻿<table class="table table-sm table-striped table-bordered">
-    <thead>
+﻿<table class="table table-sm table-bordered">
+    <thead class="bg-dark">
         <tr>
-            <th colspan="5" class="text-center">@TableTitle</th>
+            <th colspan="5" class="text-center text-white">@TableTitle</th>
         </tr>
     </thead>
 
-    <tbody>
+    <tbody class="table-hover">
         @if (Purchases?.Count() > 0)
             {
                 @foreach (Purchase p in Purchases)
@@ -17,7 +17,7 @@
                         <th>Quantity</th>
 
                         <td>
-                            <button class="btn btn-sm btn-danger" 
+                            <button class="btn btn-sm btn-outline-danger" 
                                     @onclick="@(x=> PurchaseSelected.InvokeAsync(p.PurchaseId))">@ButtonName</button>
                         </td>
                     </tr>
