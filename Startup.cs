@@ -96,6 +96,8 @@ namespace MccordMission7
 
 
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

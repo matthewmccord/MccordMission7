@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MccordMission7.Models
 {
-    public class IdentitySeedData
+    public static class IdentitySeedData
     {
         private const string adminUser = "Admin";
         private const string adminPassword = "Password123456!";
