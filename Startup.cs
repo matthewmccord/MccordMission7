@@ -2,6 +2,7 @@ using MccordMission7.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,12 @@ namespace MccordMission7
                options.UseSqlite(Configuration["ConnectionStrings:MccordBooks"]);
            });
 
+            services.AddDbContext<AppIdentityDBContext>(options =>
+           options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
+
             services.AddScoped<IBooksRepository, EfBookRepository>();
             services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
@@ -61,6 +68,9 @@ namespace MccordMission7
             app.UseSession();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
