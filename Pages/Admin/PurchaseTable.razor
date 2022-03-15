@@ -1,24 +1,26 @@
-﻿<table class="table table-sm table-bordered">
+﻿<table class="table table-sm table-bordered table-hover">
     <thead class="bg-dark">
         <tr>
             <th colspan="5" class="text-center text-white">@TableTitle</th>
         </tr>
     </thead>
 
-    <tbody class="table-hover">
+    <tbody>
         @if (Purchases?.Count() > 0)
+        {
+            @foreach (Purchase p in Purchases)
             {
-                @foreach (Purchase p in Purchases)
-                {
-                    <tr>
-                        <td>@p.Name</td>
-                        <td>@p.ZipCode</td>
-                        <th>Book</th>
-                        <th>Quantity</th>
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.ZipCode</td>
+                    <th>Book</th>
+                    <th>Quantity</th>
 
-                        <td>
-                            <button class="btn btn-sm btn-outline-danger" 
-                                    @onclick="@(x=> PurchaseSelected.InvokeAsync(p.PurchaseId))">@ButtonName</button>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger"
+                                @onclick="@(x=> PurchaseSelected.InvokeAsync(p.PurchaseId))">
+                            @ButtonName
+                            </button>
                         </td>
                     </tr>
 
@@ -33,12 +35,17 @@
                 }
         }
         else
-            {
-                <tr>
-                    <td colspan="5" class="text-center">No Purchases</td>
-                </tr>
-            }
+        {
+            <tr>
+                <td colspan="5" class="text-center">No Purchases</td>
+            </tr>
+        }
     </tbody>
+    <tfoot class="bg-dark">
+        <tr>
+            <th colspan="5" class="text-center text-white">End of @TableTitle</th>
+        </tr>
+    </tfoot>
 </table>
 
 @code{
